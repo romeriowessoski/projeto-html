@@ -12,8 +12,8 @@
     <title>Aula 04 - CSS Mobile-First</title>
 
     <link rel="stylesheet" href="css/style.css">
-
-    <script src="js/script.js" defer></script>
+    <script src = "js/app.js" defer></script>
+    <!-- <script src="js/script.js" defer></script> -->
 </head>
 
 <body>
@@ -112,6 +112,79 @@
 
         </section>
 
+        <section class="secao" id = "projeto"> 
+            <h2>Projeto desenvolvido</h2>
+            <div class="campo-busca">
+                <label for="busca">
+                    Buscar projeto
+                </label>
+
+                <input type="search"
+                id="search"
+                placeholder="Digite HTML ou CSS">
+            </div>
+
+            <p
+                id = "status"
+                role="status"
+                aria-live="polite"
+            >
+            3 projetos encontrados.
+            </p>
+            <div class="filtros">
+                <button
+                    type="button"
+                    class="btn-filtro ativo"
+                    data-filtro="todos"
+                >
+                    Todos
+                </button>
+                <button
+                    type="button"
+                    class="btn-filtro"
+                    data-filtro="html"
+                >
+                    HTML
+                </button>
+                <button
+                    type="button"
+                    class="btn-filtro"
+                    data-filtro="css"
+                >
+                    CSS
+                </button>
+            </div>
+
+            <div id="lista-projeto">
+                <article
+                    class="projeto-card"
+                    data-categoria="html">
+                    <h3>HTML Semântico</h3>
+                    <p>
+                        Projeto desenvolvido para praticar a estrutura semântica do HTML.
+                    </p>
+                </article>
+
+                <article
+                    class="projeto-card"
+                    data-categoria="css">
+                    <h3>Box Model</h3>
+                    <p>
+                        Projeto utilizado para praticar margin, padding, border e context.
+                    </p>
+                </article>
+
+                <article
+                    class="projeto-card"
+                    data-categoria="css">
+                    <h3>Flexbox e Grid</h3>
+                    <p>
+                        Projeto utilizado para trabalhar layouts responsivos.
+                    </p>
+                </article>
+            </div>
+
+        </section>
 
         <aside class="aviso">
 

@@ -1,86 +1,286 @@
-*, *::before, *::after {     box-sizing: border-box; }
-
-
-.body{
-    margin: 0;
-    background-color: var(--cor-fundo);
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--cor-texto);
-    line-height: 1.6;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
+/*================================
+    VARIÁVEIS
+==================================*/
 
+:root{
+    --cor-primaria: #5b3cc4;
+    --cor-secundaria: #432b98;
 
+    --cor-fundo: #f5f5f5;
+    --cor-card: #ffffff;
+
+    --cor-texto: #222222;
+    --cor-texto-claro: #ffffff;
+    --cor-texto-suave: #666666;
+
+    --cor-borda: #dddddd;
+
+    --espacamento-pequeno: 0.5rem;
+    --espacamento-medio: 1rem;
+    --espacamento-grande: 2rem;
+
+    --raio-borda:8px;
+
+    --sombra-card: 0 4px 14px rgba(0, 0, 0, 0.08);
+
+}
+
+/*================================
+    BODY
+==================================*/
+body {
+     /*remover o espaco externo padrão*/
+    margin: 0; 
+    /* denifir a cor de fundo */
+    background-color: var(--cor-fundo); 
+    /* Nossa fonte*/
+    font-family: Arial, Helvetica, sans-serif; 
+    /* A cor padrão dos textos */
+    color : var(--cor-texto); 
+    /*Aumente os espaços entre as linahs*/
+    line-height: 1.6; 
+}
+
+/*================================
+    CONTAINER
+==================================*/
 .container{
+    /* O conteudo vai ocupar 90 % do espaço disponivel */
     width: 90%;
+    /* Pode opupar 90% mas nunca ultrapassar 1200px*/
     max-width: 1200px;
+    /* Automatico para esquerda*/
     margin-left: auto;
+    /* Automatico para direita*/
     margin-right: auto;
 }
 
-
-
+/*================================
+    CABEÇALHO
+==================================*/
 .cabecalho{
+    /*margir*/
     background-color: var(--cor-primaria);
+    /*bordas*/
     color: var(--cor-texto-claro);
+    /*conteudo*/
     padding: var(--espacamento-medio);
-    text-align: center;
+
 }
 
-
-
-.nav{
+/*================================
+    NAVEGAÇÃO
+==================================*/
+.nav {
     display: flex;
     flex-direction: column;
     gap: var(--espacamento-pequeno);
+
 }
 
-
-
-.nav a{
+.nav a {
     color: white;
-    padding: 0.75rem 1rem;
     text-decoration: none;
+
+    padding: 0.75ren 1ren ;
+
     border-radius: var(--raio-borda);
 }
 
-
-
+/*hover ele aplica efeto quando passa com o mouser em cima
+do elemento  */
 .nav a:hover{
     background-color: var(--cor-secundaria);
 }
 
-
-
-.nav .ativo{
+.nav .ativo {
     background-color: var(--cor-secundaria);
 }
 
-
-
+/*================================
+    SEÇÕES
+==================================*/
 .secao{
     padding: var(--espacamento-grande);
 }
 
 
 
-.card{
-    width: 300px;
-    padding: 20px;
+
+/*================================
+    GRID
+==================================*/
+.grid-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacamento-medio);
+}
+
+/*================================
+    CARD
+==================================*/
+.card {
+    width:300px  ;
+    /* padding: 20px; */
     background-color: var(--cor-card);
 
     border: 1px solid var(--cor-borda);
+    border-radius:  var(--raio-borda);
+    padding: var(--espacamento-medio);  
+
+}
+
+.card:hover {
+    transform: translate(-4px);
+}
+
+/*================================
+    AVISO / ASIDE
+==================================*/
+.aviso{
+    /*margin - fora*/
+    margin: var(--espacamento-grande);
+    /*dentro*/
+    padding: var(--espacamento-medio);
+    /*as bordas*/
+    border-left: 4px solid var(--cor-primaria);
+    /*cor do fundo*/
+    background-color: #eee9ff;
+
+}
+
+
+
+
+/*================================
+    FORMULÁRIOS
+==================================*/
+.formulario{
+    background-color: white ;
+    padding: var(--espacamento-medio);
     border-radius: var(--raio-borda);
+    border: 1px solid var(--cor-borda);
+}
+.campo{
+    margin-bottom: var(--espacamento-medio);
+}
+
+.campo label {
+    display: block;
+    margin-bottom: var(--espacamento-pequeno);
+    font-weight: bold;
+}
+
+.campo input,
+.campo textarea{
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    font-size: 1rem;
+}
+
+
+
+/*================================
+    BOTÕES
+==================================*/
+.btn {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: var(--raio-borda);
+    background-color: var(--cor-primaria);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.btn:hover{
+    background-color: var(--cor-secundaria);
+}
+.form-row{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--espacamento-medio);
+
+}
+
+
+
+/*================================
+    ACESSIBILIDADE
+==================================*/
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible{
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+
+
+
+/*================================
+    RODAPÉ
+==================================*/
+.rodape{
+    margin-top: var(--espacamento-grande) ;
+    
     padding: var(--espacamento-medio);
 
+    background-color: #222;
+
+    color: white;
+
+    text-align: center;
+
+}
+
+
+/*================================
+    TABLE 
+    A PARTID DE 768PX EXISTE ESPAÇO PARA MAIS ELEMENTOS
+    LADO A LADO.
+==================================*/
+
+@media(min-width: 768px){
+    .form-row{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .btn{
+        width: auto;
+    }
+    /*Em tablets existe espaco para o menu horzontal*/
+    .nav {
+        flex-direction: row;
+    }
+
+    /*Em tablets os cards pode opupar duas colunas*/
+    .grid-cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/*Desktop */
+@media(min-width:1024px){
+    /*Em telas grandes existe espaço para três cards lado a lado*/
+    .grid-cards{
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 
 
-h1{
+h1 {
     font-family: Arial;
 }
-
 h2{
     font-family: Arial;
 }
@@ -89,29 +289,85 @@ p{
     font-family: Arial;
 }
 
-a{
-    text-decoration: none;
-    color: #222;
+a {
+    font-family: Arial;
 }
 
+/*busca*/
 
+.campo-busca {
+    margin-bottom: var(--espacamento-medio);
+}
 
-:root{
-    --cor-primaria: #5b3cc4;
-    --cor-secundaria: #432b98;
- 
-    --cor-fundo: #f5f5f5;
-    --cor-card: #ffffff;
- 
-    --cor-texto: #222222;
-    --cor-texto-claro: #ffffff;
- 
-    --cor-borda: #dddddd;
- 
-    --espacamento-pequeno: 0.5rem;
-    --espacamento-medio: 1rem;
-    --espacamento-grande: 2rem;
- 
-    --raio-borda:8px;
- 
+.campo-busca label {
+    display: block;
+    margin-bottom: var(--espacamento-pequeno);
+    font-weight: bold;
+}
+
+.campo-busca input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    font-size: 1rem;
+}
+
+/*status*/
+
+.status {
+    margin: 0 0 var(--espacamento-medio);
+    color: var(--cor-texto-suave);
+}
+/* filtros */
+
+.filtros{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacamento-pequeno);
+    margin-bottom: var(--espacamento-grande);
+}
+
+.btn-filtro {
+   flex: 1 1 120px;
+   padding: 0.75rem 1rem;
+   border: 1px solid var(--cor-borda);
+   border-radius: var(--raio-borda);
+   background-color: var(--cor-card);
+   color: var(--cor-texto);
+   cursor: pointer;
+}
+
+.btn-filtro:hover,
+.btn-filtro.ativo {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto-claro);
+    border-color: var(--cor-primaria);
+}
+
+/* Card */
+
+.projeto-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: var(--espacamento-medio);
+    padding: var(--espacamento-medio);
+    background-color: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    transition: transform 0.2s;
+}
+
+.projeto-card:hover {
+    transform: translateY(-4px);
+}
+
+.projeto-card h3,
+.projeto-card p {
+    margin: 0;
+}
+.projeto-card p{
+    color: var(--cor-texto-suave);
 }
