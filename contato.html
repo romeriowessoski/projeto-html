@@ -4,24 +4,30 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Contato - Meu Projeto</title>
 
     <link rel="stylesheet" href="css/style.css">
+
     <script src="js/contato.js" defer></script>
-    <!-- <script src="js/script.js" defer></script> -->
 </head>
 
 <body>
 
     <header class="cabecalho">
 
-        <div class="container">
+        <div class="container cabecalho-conteudo">
 
             <h1>Entre em contato</h1>
 
-            <nav class="nav" aria-label="Navegação principal">
+            <nav
+                class="nav"
+                aria-label="Navegação principal"
+            >
 
                 <a href="index.html">
                     Início
@@ -31,7 +37,11 @@
                     Sobre
                 </a>
 
-                <a class="ativo" href="contato.html">
+                <a
+                    class="ativo"
+                    href="contato.html"
+                    aria-current="page"
+                >
                     Contato
                 </a>
 
@@ -50,33 +60,63 @@
 
             <p>
                 Preencha os campos abaixo para
-                enviar sua mensagem.
+                validar sua mensagem.
             </p>
 
 
-            <form id="form-contato" class="formulario">
+            <form
+                id="form-contato"
+                class="formulario"
+                novalidate
+            >
 
                 <div class="form-row">
 
                     <div class="campo">
 
                         <label for="nome">
-                            Nome
+                            Nome *
                         </label>
 
-                        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-                        <small id="erro-nome" class="mensagem-erro"></small>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            autocomplete="name"
+                            placeholder="Digite seu nome"
+                            aria-describedby="erro-nome"
+                            required
+                        >
+
+                        <small
+                            id="erro-nome"
+                            class="mensagem-erro"
+                        ></small>
+
                     </div>
 
 
                     <div class="campo">
 
                         <label for="email">
-                            E-mail
+                            E-mail *
                         </label>
 
-                        <input type="email" id="email" name="email" placeholder="nome@email.com" required>
-                        <small id="erro-email" class="mensagem-erro"></small>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            placeholder="nome@email.com"
+                            aria-describedby="erro-email"
+                            required
+                        >
+
+                        <small
+                            id="erro-email"
+                            class="mensagem-erro"
+                        ></small>
+
                     </div>
 
                 </div>
@@ -85,37 +125,65 @@
                 <div class="campo">
 
                     <label for="assunto">
-                        Assunto
+                        Assunto *
                     </label>
 
-                    <input type="text" id="assunto" name="assunto" placeholder="Informe o assunto" required>
-                    <small id="erro-assunto" class="mensagem-erro"></small>
+                    <input
+                        type="text"
+                        id="assunto"
+                        name="assunto"
+                        placeholder="Informe o assunto"
+                        aria-describedby="erro-assunto"
+                        required
+                    >
+
+                    <small
+                        id="erro-assunto"
+                        class="mensagem-erro"
+                    ></small>
+
                 </div>
 
 
                 <div class="campo">
 
                     <label for="mensagem">
-                        Mensagem
+                        Mensagem *
                     </label>
 
-                    <textarea id="mensagem" name="mensagem" rows="6" placeholder="Digite sua mensagem"
-                        required></textarea>
-                    <small id="erro-mensagem" class="mensagem-erro"></small>
+                    <textarea
+                        id="mensagem"
+                        name="mensagem"
+                        rows="6"
+                        placeholder="Digite sua mensagem"
+                        aria-describedby="erro-mensagem"
+                        required
+                    ></textarea>
+
+                    <small
+                        id="erro-mensagem"
+                        class="mensagem-erro"
+                    ></small>
 
                 </div>
 
 
-                <button class="btn" type="submit">
+                <button
+                    class="btn"
+                    type="submit"
+                >
                     Enviar mensagem
                 </button>
 
             </form>
 
+
             <p
-            id="status-formulario"
-            class="status-formulario">
-            </p>
+                id="status-formulario"
+                class="status-formulario"
+                role="status"
+                aria-live="polite"
+            ></p>
 
         </section>
 
@@ -136,5 +204,4 @@
     </footer>
 
 </body>
-
 </html>

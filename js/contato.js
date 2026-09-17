@@ -1,92 +1,302 @@
-//selecionar os elementos
+// ======================================
+// AULA 08 - FORMULÁRIO
+// js/contato.js
+// ======================================
 
-const formulario = document.querySelector("#form-contato");
-const nome = document.querySelector("#nome");
-const email = document.querySelector("#email");
-const assunto = document.querySelector("#assunto");
-const mensagem = document.querySelector("#mensagem");
-const statusFormulario = document.querySelector("#status-formulario");
+const formulario =
+    document.querySelector('#form-contato');
 
-const erroNome = document.querySelector("#erro-nome");
-const erroEmail = document.querySelector("#erro-email");
-const erroAssunto = document.querySelector("#erro-assunto");
-const erroMensagem = document.querySelector("#erro-mensagem");
 
-//verificar se o formulario existe
+if (formulario) {
 
-if (!formulario){
-    console.log("Formulario não encontrado");
-}
+    const nome =
+        document.querySelector('#nome');
 
-//limpar o erro
+    const email =
+        document.querySelector('#email');
 
-function limparErro() {
-    erroNome.textContent = "";
-    erroEmail.textContent = "";
-    erroAssunto.textContent = "";
-    erroMensagem.textContent = "";
-    statusFormulario.textContent = "";
+    const assunto =
+        document.querySelector('#assunto');
 
-    nome.classList.remove("erro");
-    email.classList.remove("erro");
-    assunto.classList.remove("erro");
-    mensagem.classList.remove("erro");
+    const mensagem =
+        document.querySelector('#mensagem');
 
-    nome.removeAttribute("aria-invalid");
-    email.removeAttribute("aria-invalid");
-    assunto.removeAttribute("aria-invalid");
-    mensagem.removeAttribute("aria-invalid");
+    const statusFormulario =
+        document.querySelector(
+            '#status-formulario'
+        );
 
-    statusFormulario.textContent = "";
-    statusFormulario.classList.remove("erro");
-}
+    const erroNome =
+        document.querySelector(
+            '#erro-nome'
+        );
 
-//marcar um campo invalido
+    const erroEmail =
+        document.querySelector(
+            '#erro-email'
+        );
 
-function marcarErro(campo, elementoErro, texto){
-    elementoErro.textContent = texto;
-    campo.classList.add("erro");
-    campo.setAttribute("aria-invalid", "true");
-}
+    const erroAssunto =
+        document.querySelector(
+            '#erro-assunto'
+        );
 
-//validar no submit
+    const erroMensagem =
+        document.querySelector(
+            '#erro-mensagem'
+        );
 
-formulario.addEventListener(
-    "submit", function (event) {
-        event.preventDefault();
-        limparErro();
 
-        let formularioValido = true;
+    function limparErroCampo(
+        campo,
+        elementoErro
+    ) {
 
-        if (nome.value.trim() === "") {
-            marcarErro(nome, erroNome, "Informe seu nome");
-            formularioValido = false;
-        }
+        elementoErro.textContent = '';
 
-        if (email.value.trim() === "") {
-            marcarErro(email, erroEmail, "Informe seu email");
-            formularioValido = false;
-        }
+        campo.classList.remove(
+            'erro'
+        );
 
-        if (assunto.value.trim() === "") {
-            marcarErro(assunto, erroAssunto, "Informe o assunto");
-            formularioValido = false;
-        }
-
-        if (mensagem.value.trim() === "") {
-            marcarErro(mensagem, erroMensagem, "Informe a mensagem");
-            formularioValido = false;
-        }
-
-        if (formularioValido) {
-            statusFormulario.textContent = "Revise os campos destacados";
-            statusFormulario.classList.add("erro");
-            return;
-        }
-
-        statusFormulario.textContent = "Mensagem enviada com sucesso!";
-        statusFormulario.classList.add("sucesso");
-
-        formulario.reset();
+        campo.removeAttribute(
+            'aria-invalid'
+        );
     }
-)
+
+
+    function marcarErro(
+        campo,
+        elementoErro,
+        texto
+    ) {
+
+        elementoErro.textContent =
+            texto;
+
+        campo.classList.add(
+            'erro'
+        );
+
+        campo.setAttribute(
+            'aria-invalid',
+            'true'
+        );
+    }
+
+
+    function emailValido(valor) {
+
+        const padrao =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        return padrao.test(valor);
+    }
+
+
+    function limparTodosErros() {
+
+        limparErroCampo(
+            nome,
+            erroNome
+        );
+
+        limparErroCampo(
+            email,
+            erroEmail
+        );
+
+        limparErroCampo(
+            assunto,
+            erroAssunto
+        );
+
+        limparErroCampo(
+            mensagem,
+            erroMensagem
+        );
+
+
+        statusFormulario.textContent =
+            '';
+
+        statusFormulario.classList.remove(
+            'sucesso',
+            'erro'
+        );
+    }
+
+
+    formulario.addEventListener(
+        'submit',
+        function (evento) {
+
+            evento.preventDefault();
+
+            limparTodosErros();
+
+
+            let formularioValido =
+                true;
+
+            let primeiroCampoComErro =
+                null;
+
+
+            if (
+                nome.value.trim() === ''
+            ) {
+
+                marcarErro(
+                    nome,
+                    erroNome,
+                    'Informe seu nome.'
+                );
+
+                formularioValido =
+                    false;
+
+                primeiroCampoComErro =
+                    primeiroCampoComErro
+                    ||
+                    nome;
+            }
+
+
+            const valorEmail =
+                email.value.trim();
+
+
+            if (valorEmail === '') {
+
+                marcarErro(
+                    email,
+                    erroEmail,
+                    'Informe seu e-mail.'
+                );
+
+                formularioValido =
+                    false;
+
+                primeiroCampoComErro =
+                    primeiroCampoComErro
+                    ||
+                    email;
+
+            } else if (
+                !emailValido(valorEmail)
+            ) {
+
+                marcarErro(
+                    email,
+                    erroEmail,
+                    'Informe um e-mail válido.'
+                );
+
+                formularioValido =
+                    false;
+
+                primeiroCampoComErro =
+                    primeiroCampoComErro
+                    ||
+                    email;
+            }
+
+
+            if (
+                assunto.value.trim() === ''
+            ) {
+
+                marcarErro(
+                    assunto,
+                    erroAssunto,
+                    'Informe o assunto.'
+                );
+
+                formularioValido =
+                    false;
+
+                primeiroCampoComErro =
+                    primeiroCampoComErro
+                    ||
+                    assunto;
+            }
+
+
+            if (
+                mensagem.value.trim() === ''
+            ) {
+
+                marcarErro(
+                    mensagem,
+                    erroMensagem,
+                    'Informe sua mensagem.'
+                );
+
+                formularioValido =
+                    false;
+
+                primeiroCampoComErro =
+                    primeiroCampoComErro
+                    ||
+                    mensagem;
+            }
+
+
+            if (!formularioValido) {
+
+                statusFormulario.textContent =
+                    'Revise os campos destacados.';
+
+                statusFormulario.classList.add(
+                    'erro'
+                );
+
+
+                if (
+                    primeiroCampoComErro
+                ) {
+
+                    primeiroCampoComErro.focus();
+                }
+
+
+                return;
+            }
+
+
+            statusFormulario.textContent =
+                'Mensagem validada com sucesso!';
+
+            statusFormulario.classList.add(
+                'sucesso'
+            );
+
+
+            formulario.reset();
+        }
+    );
+
+
+    // Remove o erro enquanto o aluno corrige o campo.
+    [
+        [nome, erroNome],
+        [email, erroEmail],
+        [assunto, erroAssunto],
+        [mensagem, erroMensagem]
+    ].forEach(
+        function ([campo, erro]) {
+
+            campo.addEventListener(
+                'input',
+                function () {
+
+                    limparErroCampo(
+                        campo,
+                        erro
+                    );
+                }
+            );
+
+        }
+    );
+}
